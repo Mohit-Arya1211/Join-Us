@@ -55,12 +55,13 @@ app.get("/", function(req, res) {
             return console.log(err);
         }
         var count = result[0].count;
-        res.send("We have " + count + " users in our database.");
+        res.render('home', { data: count });
     });
 
 });
 
-
+// Template Added:
+app.set("view engine", "ejs");
 
 // Server Added :
 app.listen(1211, function() {
