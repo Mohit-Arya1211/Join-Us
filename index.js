@@ -11,32 +11,9 @@ var connection = mysql.createConnection({
     password: '123445',
     database: 'join_us',
     port: 3306
-        //multipleStatements: true
 });
 
 //Enter the query: 
-//connection.connect();
-
-//running Query:
-
-// Query to get the count :
-//Routes for App by Express.Js
-
-var app = express();
-app.get("/", function(req, res) {
-
-    var q2 = "select count(*) as count from users";
-    connection.query(q2, function(err, result) {
-        if (err) {
-            return console.log(err);
-        }
-        var count = result[0].count;
-        res.send("We have " + count + " users in our database.");
-    });
-
-});
-
-
 
 //##########################################################################################
 //For entering the 500 dummy Users Loop:
@@ -64,9 +41,28 @@ app.get("/", function(req, res) {
 //     });
 
 
+//running Query:
+
+// Query to get the count :
+//Routes for App by Express.Js
+
+var app = express();
+app.get("/", function(req, res) {
+
+    var q2 = "select count(*) as count from users";
+    connection.query(q2, function(err, result) {
+        if (err) {
+            return console.log(err);
+        }
+        var count = result[0].count;
+        res.send("We have " + count + " users in our database.");
+    });
+
+});
+
+
+
 // Server Added :
 app.listen(1211, function() {
     console.log("App running on port : 1211");
 });
-
-//connection.end();
